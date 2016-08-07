@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class WordInputter : MonoBehaviour {
 
+    public GameObject ErrorMsg;
     public InputField inputField;
     public Text displayText;
     int wordsEntered = 0;
@@ -18,37 +19,47 @@ public class WordInputter : MonoBehaviour {
         Short =1
     }
 
-    void Awake(){
+    void Start(){
         inputField.onEndEdit.AddListener(SubmitName);
+        inputField.onValueChanged.AddListener(BeginTyping);
+        inputField.ActivateInputField();
+        inputField.Select();
         traumaticWords = new string[maxWords];
         
     }
 
+    void BeginTyping(string input) {
+        ErrorMsg.SetActive(false);
+    }
+
     void SubmitName(string tWord){
+        inputField.ActivateInputField();
+        inputField.Select();
+
         switch (GetEntryValidity(tWord)){
             case EntryError.Valid:
                 traumaticWords[wordsEntered] = tWord;
                 displayText.text += tWord + "\n";
+                
                 inputField.text = "";
-                GUI.FocusControl(guiControlName);
                 wordsEntered++;
                 if (wordsEntered == maxWords){
-                    Debug.Log("Five Words Entered!");
                     inputField.enabled = false;
-                    //MoveToGameScene();
+                    MoveToGameScene();
                 }
                 break;
             case EntryError.Short:
                 Debug.Log("SHORT!");
+                ErrorMsg.SetActive(true);
                 //Display Short Error Message
                 break;
         }
     }
 
     void MoveToGameScene() {
-        GameManager.Instance.StoreTraumaticWords(traumaticWords);
-        //Do some gradual animation
-        SceneManager.LoadScene((int)SceneNames.Game);
+        GameManager.Instance.ToggleTextCanvas(false);
+        JarManager.Instance.StoreWords(traumaticWords);
+
     }
 
     EntryError GetEntryValidity(string textInput) {

@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour {
 	private int navIndex = 0;
 
 	public GameObject NavPoints;
-	public float navDistanceOffset = 0.5f;
+	public float navDistanceOffset = 0.005f;
 
 	void Start () {
 		
@@ -28,17 +28,23 @@ public class Movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if ( navAgent.remainingDistance < navDistanceOffset ) {
-			GoToNextNavPoint();
+		if (!navAgent.pathPending)
+		{
+			if (navAgent.remainingDistance <= navAgent.stoppingDistance)
+			{
+				if (!navAgent.hasPath || navAgent.velocity.sqrMagnitude == 0f)
+				{
+					// Done
+					GoToNextNavPoint();
+				}
+			}
 		}
 	}
 
 	void GoToNextNavPoint() {
 		// No Nav Points
 		if (transforms.Length == 0 ) return;
-
+		navIndex = (navIndex) % (transforms.Length - 1) + 1;
 		navAgent.destination = transforms[ navIndex ].transform.position;
-
-		navIndex = (navIndex + 1) % transforms.Length; 
 	}
 }
