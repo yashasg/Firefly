@@ -10,23 +10,24 @@ public enum SceneNames
 public class GameManager : MonoBehaviour {
 
     public static GameManager Instance;
+    public GameObject TextCanvas;
 
 
-    string[] traumaticWords;
-
-
-
-    //The Input
-    public void StoreTraumaticWords(string[] traumaticWords) {
-        this.traumaticWords = traumaticWords;
+    void Awake() {
+        Instance = this;
     }
 
-    public void AnimateSceneTransition(){
-        StartCoroutine(GoToGame());
+    public void ToggleTextCanvas(bool turnOn) {
+        TextCanvas.SetActive(turnOn);
+        if (turnOn){
+            StartCoroutine(GoToGame());
+        }
+        else {
+
+        }
     }
+
     IEnumerator GoToGame() {
         yield return null;
     }
-
-    public string[] GetTraumaticWords() { return traumaticWords; }
 }
