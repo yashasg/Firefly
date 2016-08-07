@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class JarManager : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class JarManager : MonoBehaviour {
     public GameObject lettersParent;
     GameObject[] jars;
     GameObject[] letters;
+    Text[] letterTexts;
     public bool up, resetJars;
 
     string[] traumaticWords;
@@ -21,6 +23,7 @@ public class JarManager : MonoBehaviour {
         Instance = this;
         jars = new GameObject[jarParent.transform.childCount];
         letters = new GameObject[lettersParent.transform.childCount];
+        letterTexts = new Text[lettersParent.transform.childCount];
         SetJars();
         SetLetters();
     }
@@ -41,6 +44,7 @@ public class JarManager : MonoBehaviour {
         foreach (Transform child in lettersParent.transform)
         {
             letters[i] = child.gameObject;
+            letterTexts[i] = letters[i].GetComponent<Text>();
             i++;
         }
         ResetLetters();
@@ -78,14 +82,19 @@ public class JarManager : MonoBehaviour {
     //The WordInput Calls this when the word is entered
     public void StoreWords(string[] traumaticWords) {
         this.traumaticWords = traumaticWords;
-        LoadJars(traumaticWords[0].Length);
+        LoadJars(traumaticWords[0]);
     }
 
-    void LoadJars(int currentWordLength) {
-        this.currentWordLength = currentWordLength;
+    void LoadJars(string currentWord) {
+        currentWordLength = currentWord.Length;
         for (int i = 0; i < jars.Length; i++) {
             bool jarPresent = i < currentWordLength ? true : false;
             jars[i].SetActive(jarPresent);
+            letters[i].SetActive(jarPresent);
+
+            if (jarPresent) {
+                letterTexts[i].text = currentWord[i].ToString();
+            }
         }
     }
 

@@ -58,6 +58,8 @@ public class WordInputter : MonoBehaviour {
 
     void MoveToGameScene() {
         GameManager.Instance.ToggleTextCanvas(false);
+        JarManager.Instance.StoreWords(traumaticWords);
+
     }
 
     EntryError GetEntryValidity(string textInput) {
