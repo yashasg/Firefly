@@ -105,8 +105,8 @@ public class ProjectileCollisionBehaviour : MonoBehaviour
     }
     else randomTargetOffsetXZVector = Vector3.zero;
     if (!effectSettings.UseMoveVector) {
-      forwardDirection = tRoot.position + (tTarget.position + randomTargetOffsetXZVector - tRoot.position).normalized * effectSettings.MoveDistance;
-      GetTargetHit();
+      //forwardDirection = tRoot.position + (tTarget.position + randomTargetOffsetXZVector - tRoot.position).normalized * effectSettings.MoveDistance;
+     // GetTargetHit();
     }
     else
       forwardDirection = tRoot.position + effectSettings.MoveVector * effectSettings.MoveDistance;
