@@ -1,23 +1,17 @@
 fileFormatVersion: 2
-guid: 1fd8d0b1a9b8e024b972e6a4ccf834ab
-timeCreated: 1470534482
-licenseType: Free
+guid: 54763c67c6ab26a4d86074d21d478624
+timeCreated: 1470613512
+licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pCylinder1
-    100004: pCylinder2
+    100002: polySurface8_pPlane2
     400000: //RootNode
-    400002: pCylinder1
-    400004: pCylinder2
-    2300000: pCylinder1
-    2300002: pCylinder2
-    3300000: pCylinder1
-    3300002: pCylinder2
-    4300000: pCylinder1
-    4300002: pCylinder2
-    9500000: //RootNode
+    400002: polySurface8_pPlane2
+    2300000: polySurface8_pPlane2
+    3300000: polySurface8_pPlane2
+    4300000: polySurface8_pPlane2
   materials:
     importMaterials: 1
     materialName: 0
@@ -76,7 +70,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
