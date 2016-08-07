@@ -3,7 +3,7 @@ using System.Collections;
 
 public class HoverSensor : MonoBehaviour {
     float m_timercatcher;
-    public float m_hovetime;
+    public float m_hovertime;
 
 	// Use this for initialization
 	void Start () {
@@ -17,9 +17,10 @@ public class HoverSensor : MonoBehaviour {
     void OnMouseOver()
     {
         Debug.Log(m_timercatcher.ToString());
-        if (m_timercatcher > m_hovetime)
+        if (m_timercatcher > m_hovertime)
         {
             m_timercatcher = 0.0f;
+            JarManager.Instance.AddFireFly();
             Destroy(gameObject);
         }
         else
