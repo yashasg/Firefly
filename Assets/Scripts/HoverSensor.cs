@@ -6,13 +6,10 @@ public class HoverSensor : MonoBehaviour {
     public float m_hovertime;
     AudioSource m_sound;
     public GameObject my_Firefly;
-    public GameObject ParticleEffect;
-    bool isInvoked = false;
 
 	// Use this for initialization
 	void Start () {
         m_sound = GetComponent<AudioSource>();
-        ParticleEffect.SetActive(true);
 
 
     }
@@ -29,7 +26,7 @@ public class HoverSensor : MonoBehaviour {
             m_timercatcher = 0.0f;
             //AudioSource.PlayClipAtPoint(m_sound.clip, Camera.main.gameObject.transform.position);
             //m_sound.PlayOneShot();
-           sendToJar();
+            sendToJar();
           //  Invoke("makeNewFly", 1.0f);
            // Destroy(GetComponent<Movement>());
         }
