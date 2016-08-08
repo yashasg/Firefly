@@ -22,7 +22,7 @@ public class HoverSensor : MonoBehaviour {
         if (m_timercatcher > m_hovertime)
         {
             m_timercatcher = 0.0f;
-            AudioSource.PlayClipAtPoint(m_sound.clip, Camera.main.gameObject.transform.position);
+            //AudioSource.PlayClipAtPoint(m_sound.clip, Camera.main.gameObject.transform.position);
             //m_sound.PlayOneShot();
            // JarManager.Instance.AddFireFly();
            // sendToJar();
