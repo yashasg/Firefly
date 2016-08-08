@@ -106,17 +106,8 @@ public class JarManager : MonoBehaviour {
     //The HoverSensor calls this when onMouseOver() destroys it
     public void AddFireFly() {
         fireflyCount++;
-        //Instantiate new Firefly? save that for another manager
-
-        //Every 5th firefly, start adding to a new jar
-        if (fireflyCount % 5 == 0) {
-            SwitchTargetJar();
-        }
-    }
-
-    void SwitchTargetJar() {
         targetJar++;
-        if (targetJar == currentWordLength) {
+        if (targetJar == currentWordLength){
             targetJar = 0;
         }
     }
