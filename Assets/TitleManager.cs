@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour {
 
@@ -18,6 +19,7 @@ public class TitleManager : MonoBehaviour {
     public void setGameTime(float i_timer)
     {
         PlayerPrefs.SetFloat("Timer", i_timer);
+        SceneManager.LoadScene(1);
     }
 
 }

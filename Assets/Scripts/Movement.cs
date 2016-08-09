@@ -4,15 +4,17 @@ using System.Collections;
 [RequireComponent (typeof(NavMeshAgent))]
 public class Movement : MonoBehaviour {
 
+    public static Movement Instance;
 	private NavMeshAgent navAgent;
-	private Transform[] transforms;
+	public Transform[] transforms;
 	private int navIndex = 0;
+    
 
 	public GameObject NavPoints;
 	public float navDistanceOffset = 0.005f;
 
 	void Start () {
-		
+        Instance = this;
 		navIndex = 0;
 		navAgent = GetComponent<NavMeshAgent>();
 		navAgent.updateRotation = false;
